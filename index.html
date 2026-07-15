@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny Sharma | Portfolio</title>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00c6ff, #f100ff);
+            --dark-bg: #111111;
+            --light-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- STICKY NAV PILL --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 850px;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .nav-btn {
+            background: var(--primary-gradient);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(241, 0, 255, 0.3);
+        }
+
+        /* --- COMMON SECTION STYLES --- */
+        section {
+            padding: 120px 10% 80px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            flex-direction: row;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            border: 1.5px solid var(--text-main);
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        #experience {
+            background-color: #fafafa;
+        }
+
+        .exp-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .exp-card {
+            background: #fff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .exp-card.dark {
+            background: var(--dark-bg);
+            color: #fff;
+            border-color: var(--dark-bg);
+        }
+
+        .exp-card i {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .exp-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .exp-card .duration {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .exp-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .exp-card.dark p {
+            color: #aaa;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .exp-photo-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .exp-photo {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 30px;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 30px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card.dark {
+            background: var(--dark-bg);
+            color: #fff;
+            border-color: var(--dark-bg);
+        }
+
+        .project-img-box {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 200px;
+            margin-bottom: 20px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .project-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .project-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .project-card.dark .project-info p {
+            color: #aaa;
+        }
+
+        .project-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .project-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid var(--text-main);
+            color: var(--text-main);
+            transition: all 0.2s;
+        }
+
+        .project-card.dark .project-btn {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .project-btn:hover {
+            background: var(--text-main);
+            color: #fff;
+        }
+
+        .project-card.dark .project-btn:hover {
+            background: #fff;
+            color: var(--dark-bg);
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-box {
+            width: 100%;
+            max-width: 650px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            justify-content: center;
+        }
+
+        .contact-box i {
+            color: #000;
+            font-size: 2rem;
+        }
+
+        .contact-details {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1.5px solid var(--border-color);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- RESPONSIVE LAYOUT (MOBILE OPTIMIZED) --- */
+        @media (max-width: 900px) {
+            header {
+                width: 95%;
+                padding: 10px 15px;
+            }
+            nav {
+                gap: 12px;
+            }
+            #hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 140px;
+            }
+            .hero-img {
+                width: 280px;
+                height: 280px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .exp-container {
+                grid-template-columns: 1fr;
+            }
+            .exp-photo-container {
+                order: -1;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                border-radius: 20px;
+                gap: 10px;
+            }
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+            .exp-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-box {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY NAVIGATION BAR -->
+    <header>
+        <a href="#hero" class="logo">Sunny Sharma</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="https://github.com" target="_blank" class="nav-btn">Visit Github</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <!-- Photo with the ripped circular look as in Image 5 -->
+        <div class="hero-img-container">
+            <img src="sunny.png" alt="Sunny Sharma" class="hero-img" onerror="this.src='https://via.placeholder.com/380'">
+        </div>
+        <div class="hero-content" id="about">
+            <h3>Hi, I'm</h3>
+            <h1>Sunny Sharma</h1>
+            <h2 class="gradient-text">Frontend Developer</h2>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-outline">Download CV</a>
+                <a href="#contact" class="btn btn-outline">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="exp-container">
+            <div class="exp-grid">
+                <!-- Card 1 -->
+                <div class="exp-card">
+                    <i class="fa-solid fa-code" style="color: #4f46e5;"></i>
+                    <h4>Frontend Development</h4>
+                    <div class="duration gradient-text">5 Years</div>
+                    <p>Building highly performant, responsive web interfaces with clean layouts and robust architectures.</p>
+                </div>
+                <!-- Card 2 (Highlighted Dark Card) -->
+                <div class="exp-card dark">
+                    <i class="fa-solid fa-pen-nib" style="color: #f100ff;"></i>
+                    <h4 class="gradient-text">Graphic Design</h4>
+                    <div class="duration">2 Years</div>
+                    <p>Creating beautiful, minimal, and premium aesthetic layouts that grab target audience attention.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="exp-card">
+                    <i class="fa-solid fa-laptop-code" style="color: #06b6d4;"></i>
+                    <h4>System Design</h4>
+                    <div class="duration gradient-text">2 Years</div>
+                    <p>Structuring modular, easily expandable databases and client-server systems architecture.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="exp-card">
+                    <i class="fa-solid fa-list-check" style="color: #f59e0b;"></i>
+                    <h4>Content Manager</h4>
+                    <div class="duration gradient-text">1 Year</div>
+                    <p>Managing complete digital content strategies to align product presentation with branding aesthetics.</p>
+                </div>
+            </div>
+            <!-- Square Photo Container on Right -->
+            <div class="exp-photo-container">
+                <img src="sunny.png" alt="Sunny Sharma" class="exp-photo" onerror="this.src='https://via.placeholder.com/320'">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="projects-grid">
+            <!-- Project X (Dark Card) -->
+            <div class="project-card dark">
+                <div class="project-img-box">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80" alt="Project X">
+                </div>
+                <div class="project-info">
+                    <h4>Project X</h4>
+                    <p>A full-featured eCommerce and UI Kit template optimized for modern online retail experiences.</p>
+                    <div class="project-actions">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">Github Repo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Y -->
+            <div class="project-card">
+                <div class="project-img-box">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Project Y">
+                </div>
+                <div class="project-info">
+                    <h4>Project Y</h4>
+                    <p>A comprehensive Web3 Security Leaderboard app showcasing interactive dashboards and security analysis.</p>
+                    <div class="project-actions">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">Github Repo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Z -->
+            <div class="project-card">
+                <div class="project-img-box" style="background: #ffeedb;">
+                    <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=500&q=80" alt="Project Z">
+                </div>
+                <div class="project-info">
+                    <h4>Project Z</h4>
+                    <p>A live Cryptocurrency ranking web application styled with modern color-coded asset tracking metrics.</p>
+                    <div class="project-actions">
+                        <a href="#" class="project-btn">Live Demo</a>
+                        <a href="#" class="project-btn">Github Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        
+        <div class="contact-box">
+            <i class="fa-regular fa-envelope"></i>
+            <span>00sunnysunny@gmail.com</span>
+        </div>
+
+        <div class="contact-details">
+            <p><strong>Phone:</strong> +91 7004806647</p>
+            <p><strong>Location:</strong> Godda | Jharkhand, India</p>
+        </div>
+
+        <button class="btn btn-outline" id="submitBtn" style="margin-top: 20px;">Submit</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-nav">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 Sunny Sharma. All rights reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Smooth transition effect for scroll reveal or elements interaction
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.addEventListener('click', () => {
+            window.location.href = "mailto:00sunnysunny@gmail.com?subject=Inquiry from Portfolio";
+        });
+    </script>
+</body>
+</html>
